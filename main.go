@@ -5,6 +5,7 @@ import (
 	"github.com/anuragrao04/pesuio-final-project/compiler"
 	"github.com/anuragrao04/pesuio-final-project/questions"
 	"github.com/gin-gonic/gin"
+	"log"
 )
 
 func main() {
@@ -17,5 +18,6 @@ func main() {
 
 	router.POST("/question/create", questions.CreateQuestion)
 	router.POST("/question/fetch", questions.FetchQuestion)
+	log.Println("Server is running on port 6969!")
 	router.Run(":6969")
 }
