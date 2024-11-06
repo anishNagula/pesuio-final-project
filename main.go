@@ -1,11 +1,12 @@
 package main
 
 import (
-	"github.com/anuragrao04/pesuio-final-project/auth"
-	"github.com/anuragrao04/pesuio-final-project/compiler"
-	"github.com/anuragrao04/pesuio-final-project/questions"
-	"github.com/gin-gonic/gin"
 	"log"
+
+	"github.com/anishNagula/pesuio-final-project/auth"
+	"github.com/anishNagula/pesuio-final-project/compiler"
+	"github.com/anishNagula/pesuio-final-project/questions"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {

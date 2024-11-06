@@ -1,7 +1,8 @@
 package auth
 
 import (
-	"github.com/anuragrao04/pesuio-final-project/models"
+	"github.com/anishNagula/pesuio-final-project/database" // Import the database package
+	"github.com/anishNagula/pesuio-final-project/models"   // Import the models package
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,7 +17,14 @@ func Signup(c *gin.Context) {
 		})
 	}
 
-	// implement
+	err = database.CreateUser(request.Username, request.Password)
+	if err != nil {
+		c.JSON(400, gin.H{
+			"error": "couldn't create user",
+		})
+		return
+	}
+
 	c.JSON(200, gin.H{
 		"success": true,
 	})

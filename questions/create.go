@@ -1,7 +1,7 @@
 package questions
 
 import (
-	"github.com/anuragrao04/pesuio-final-project/models"
+	"github.com/anishNagula/pesuio-final-project/models"
 	"github.com/gin-gonic/gin"
 )
 

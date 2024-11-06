@@ -1,7 +1,8 @@
 package auth
 
 import (
-	"github.com/anuragrao04/pesuio-final-project/models"
+	"github.com/anishNagula/pesuio-final-project/database" // Import the database package
+	"github.com/anishNagula/pesuio-final-project/models"   // Import the models package
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,7 +16,20 @@ func Signin(c *gin.Context) {
 		})
 	}
 
-	// implement
+	success, err := database.CheckPassword(request.Username, request.Password)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"error": "server error: ",
+		})
+		return
+	}
+
+	if !success {
+		c.JSON(401, gin.H{
+			"error": "invalid username/password",
+		})
+		return
+	}
 
 	c.JSON(200, gin.H{
 		"success": true,
