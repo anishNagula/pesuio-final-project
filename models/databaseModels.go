@@ -15,6 +15,8 @@ type Question struct {
 }
 
 type TestCase struct {
+	ID             uint   `json:"id"`
+	QuestionID     uint   `json:"question_id"` // Foreign key to Question
 	Input          string `json:"input"`
 	ExpectedOutput string `json:"expectedOutput"`
 }

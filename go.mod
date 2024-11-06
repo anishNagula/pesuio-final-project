@@ -3,7 +3,6 @@ module github.com/anishNagula/pesuio-final-project
 go 1.23.1
 
 require (
-	github.com/anishNagula/pesuio-final-project v0.0.0-20241105113614-b7c6e74459cf
 	github.com/gin-gonic/gin v1.10.0
 	gorm.io/driver/sqlite v1.5.6
 	gorm.io/gorm v1.25.12

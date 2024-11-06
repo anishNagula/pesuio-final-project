@@ -5,11 +5,17 @@ import (
 
 	"github.com/anishNagula/pesuio-final-project/auth"
 	"github.com/anishNagula/pesuio-final-project/compiler"
+	"github.com/anishNagula/pesuio-final-project/database"
 	"github.com/anishNagula/pesuio-final-project/questions"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	if err := database.InitDB(); err != nil {
+		log.Fatal("Error initializing database: ", err)
+	}
+
 	router := gin.Default()
 
 	router.POST("/auth/signin", auth.Signin)

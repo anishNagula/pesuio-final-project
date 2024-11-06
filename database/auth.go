@@ -4,27 +4,7 @@ import (
 	"fmt"
 
 	"github.com/anishNagula/pesuio-final-project/models"
-	"gorm.io/driver/sqlite"
-	"gorm.io/gorm"
 )
-
-var db *gorm.DB
-
-// Initialize the DB connection (run this at the start of your app)
-func InitDB() error {
-	var err error
-	db, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
-	if err != nil {
-		return fmt.Errorf("database connection failed: %v", err)
-	}
-
-	// Migrate the schema for models.User
-	if err := db.AutoMigrate(&models.User{}); err != nil {
-		return fmt.Errorf("failed to migrate schema: %v", err)
-	}
-
-	return nil
-}
 
 // Create a new user
 func CreateUser(username, password string) error {

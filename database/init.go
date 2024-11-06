@@ -1,11 +1,31 @@
 package database
 
-import "gorm.io/gorm"
+import (
+	"fmt"
 
-var DB *gorm.DB
+	"github.com/anishNagula/pesuio-final-project/models"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
+)
 
-func Init(databaseFileName string) {
-	// implement
-	// populate DB variable
+var db *gorm.DB
 
+// InitDB initializes the database connection
+func InitDB() error {
+	var err error
+	db, err = gorm.Open(sqlite.Open("pesuio.db"), &gorm.Config{})
+	if err != nil {
+		return fmt.Errorf("failed to connect to database: %v", err)
+	}
+
+	// Migrate the schema
+	if err := db.AutoMigrate(&models.User{}, &models.Question{}, &models.TestCase{}); err != nil {
+		return fmt.Errorf("failed to migrate database: %v", err)
+	}
+
+	return nil
+}
+
+func GetDB() *gorm.DB {
+	return db
 }
