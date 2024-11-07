@@ -1,8 +1,8 @@
 package auth
 
 import (
-	"github.com/anishNagula/pesuio-final-project/database" // Import the database package
-	"github.com/anishNagula/pesuio-final-project/models"   // Import the models package
+	"github.com/anishNagula/pesuio-final-project/database"
+	"github.com/anishNagula/pesuio-final-project/models"
 	"github.com/gin-gonic/gin"
 )
 

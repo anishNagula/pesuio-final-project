@@ -16,20 +16,17 @@ func CreateQuestion(c *gin.Context) {
 		return
 	}
 
-	// Validate input
 	if request.Question == "" || len(request.TestCases) == 0 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Question and test cases are required"})
 		return
 	}
 
-	// Create the question in the database using GetDB()
 	question := models.Question{
-		Question:  request.Question,
-		TestCases: request.TestCases,
-		Difficulty : request.Difficulty,
+		Question:   request.Question,
+		TestCases:  request.TestCases,
+		Difficulty: request.Difficulty,
 	}
 
-	// Using GetDB() to access the db instance
 	if err := database.GetDB().Create(&question).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create question"})
 		return
@@ -39,10 +36,9 @@ func CreateQuestion(c *gin.Context) {
 }
 
 func FilterQuestionsByDifficulty(c *gin.Context) {
-	difficulty := c.Query("difficulty") // Get difficulty from query parameters
+	difficulty := c.Query("difficulty")
 
 	var questions []models.Question
-	// Filter questions by difficulty
 	if err := database.GetDB().Where("difficulty = ?", difficulty).Find(&questions).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve questions"})
 		return

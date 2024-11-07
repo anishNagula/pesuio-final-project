@@ -23,6 +23,7 @@ func CreateUser(username, password string) error {
 	return nil
 }
 
+// c Check password
 func CheckPassword(username, password string) (bool, error) {
 	var user models.User
 	if err := db.Where("username = ?", username).First(&user).Error; err != nil {
