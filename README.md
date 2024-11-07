@@ -15,8 +15,8 @@ The primary function of this project is to POST questions, which will have :
 
 | Endpoint         | Method | Path             | Request Example                                                                                                         |
 |------------------|--------|------------------|-------------------------------------------------------------------------------------------------------------------------|
-| *Sign Up*      | POST   | /auth/signup   | json {"username": "testuser", "password": "password123"}                                                         |
-| *Sign In*      | POST   | /auth/signin   | json {"username": "testuser", "password": "password123"}                                                         |
-| *Create Question* | POST | /question/create | json {"question": "What is the capital of France?", difficulty : "easy", "testCases": [{"input": "", "expectedOutput": "Paris"}], "score": 10} |
-| *Fetch Question* | POST | /question/fetch | json {"questionID": 1}                                                                                           |
-| *Run Code (Python)* | POST | /run           | json {"language": "python", "code": "print('Hello World')", "input": ""}                                         |
+| *Sign Up*      | POST   | /auth/signup   | {"username": "testuser", "password": "password123"}                                                         |
+| *Sign In*      | POST   | /auth/signin   | {"username": "testuser", "password": "password123"}                                                         |
+| *Create Question* | POST | /question/create | {"question": "What is the capital of France?", difficulty : "easy", "testCases": [{"input": "", "expectedOutput": "Paris"}], "score": 10} |
+| *Fetch Question* | POST | /question/fetch | {"questionID": 1}                                                                                           |
+| *Run Code (Python)* | POST | /run           | {"language": "python", "code": "print('Hello World')", "input": ""}                                         |
