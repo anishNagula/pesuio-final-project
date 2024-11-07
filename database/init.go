@@ -10,13 +10,15 @@ import (
 
 var db *gorm.DB
 
+// InitDB initializes the database connection
 func InitDB() error {
 	var err error
-	db, err = gorm.Open(sqlite.Open("leet.db"), &gorm.Config{})
+	db, err = gorm.Open(sqlite.Open("pesuio.db"), &gorm.Config{})
 	if err != nil {
 		return fmt.Errorf("failed to connect to database: %v", err)
 	}
 
+	// Migrate the schema
 	if err := db.AutoMigrate(&models.User{}, &models.Question{}, &models.TestCase{}); err != nil {
 		return fmt.Errorf("failed to migrate database: %v", err)
 	}

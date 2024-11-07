@@ -20,6 +20,7 @@ type CreateQuestionRequest struct {
 	Question  string     `json:"question"`
 	TestCases []TestCase `json:"testCases"`
 	Score     int        `json:"score"`
+	Difficulty string    `json:"difficulty"`
 }
 
 type FetchQuestionRequest struct {

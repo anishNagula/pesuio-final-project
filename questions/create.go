@@ -26,6 +26,7 @@ func CreateQuestion(c *gin.Context) {
 	question := models.Question{
 		Question:  request.Question,
 		TestCases: request.TestCases,
+		Difficulty : request.Difficulty,
 	}
 
 	// Using GetDB() to access the db instance
@@ -35,4 +36,19 @@ func CreateQuestion(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"success": true, "questionID": question.ID})
+}
+
+func FilterQuestionsByDifficulty(c *gin.Context) {
+	difficulty := c.Query("difficulty") // Get difficulty from query parameters
+
+	var questions []models.Question
+	// Filter questions by difficulty
+	if err := database.GetDB().Where("difficulty = ?", difficulty).Find(&questions).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to retrieve questions"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"questions": questions,
+	})
 }

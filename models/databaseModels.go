@@ -12,6 +12,7 @@ type Question struct {
 	gorm.Model
 	Question  string     `json:"question"`
 	TestCases []TestCase `json:"testCases"`
+	Difficulty string 	 `json:"difficulty"`
 }
 
 type TestCase struct {

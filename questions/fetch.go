@@ -26,5 +26,6 @@ func FetchQuestion(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"question":  question.Question,
 		"testCases": question.TestCases,
+		"difficulty" : question.Difficulty,
 	})
 }
